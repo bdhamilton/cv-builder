@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Icon from '@mdi/react';
+import { mdiWeb, mdiEmailOutline, mdiCellphone } from '@mdi/js';
 
 function App() {
   return (
@@ -19,9 +21,17 @@ function Header() {
     <header>
       <h1>{person.firstName} {person.lastName}</h1>
       <div>
-        <p className="url">{person.url}</p>
-        <p className="email">{person.email}</p>
-        <p className="phone">{person.phone}</p>
+        <p className="url">
+          <span className="icon"><Icon path={mdiWeb} size={.8} /></span>
+          <a href={person.url}>{person.url.split("/")[2]}</a></p>
+        <p className="email">
+          <span className="icon"><Icon path={mdiEmailOutline} size={.8} /></span>
+          {person.email}
+        </p>
+        <p className="phone">
+          <span className="icon"><Icon path={mdiCellphone} size={.8} /></span>
+          {person.phone}
+        </p>
       </div>
     </header>
   );
@@ -31,10 +41,10 @@ function Education() {
   const [degrees, setDegrees] = useState(dummyDegrees);
 
   return (
-    <div className="education">
+    <section className="education">
       <h2>Education</h2>
       {degrees.map(degree => <Degree key={degree.id} degree={degree} />)}
-    </div>
+    </section>
   );
 }
 
@@ -68,9 +78,9 @@ function Job({ job }) {
     : null;
 
   return (
-    <div className="job">
+    <div className="jobs__job">
       <h3>{job.company}</h3>
-      <h4>{job.position}, {job.startDate}&ndash;{job.endDate}</h4>
+      <h4>{job.position}, {job.startDate}&ndash;{job.endDate ? job.endDate : "present"}</h4>
       {responsibilities}
     </div>
   );

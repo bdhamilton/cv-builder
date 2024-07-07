@@ -1,8 +1,30 @@
-# React + Vite
+# CV Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Here are my main components:
 
-Currently, two official plugins are available:
+CV
+  Header
+    On state: name, email, phone
+  Education
+    On state: degrees (array of objects)
+    Degree...
+    AddEducationForm
+  Work Experience
+    On state: jobs (array of objects)
+    Job...
+    AddWorkForm
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Degree objects {
+  school
+  degree
+  startDate
+  endDate?
+}
+
+Job objects {
+  company
+  position
+  responsibilities[]
+  startDate
+  endDate
+}
